@@ -1,0 +1,32 @@
+.cate {
+  position: absolute;
+  top: 1rem;
+  left: 1.8rem;
+}
+.cate div {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.2rem;
+  border: 1px solid #1D84A7;
+  overflow: hidden;
+  float: left;
+  margin: 0.2rem;
+}
+.cate div img {
+  width: 100%;
+  height: 100%;
+}
+.cate div span {
+  display: inline-block;
+  position: relative;
+  left: 0;
+  bottom: 0.5rem;
+  z-index: 9;
+  width: 100%;
+  height: 0.5rem;
+  line-height: 0.5rem;
+  background: #1D84A7;
+  text-align: center;
+  color: #fff;
+}
+/*# sourceMappingURL=Cate.css.map */

@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {HashRouter} from 'react-router-dom'
+import {Provider} from 'react-redux'
 import App from './App';
+import store from "./store";
 
 // 重置样式表
 import './asset/css/reset.css';
@@ -11,8 +13,10 @@ import './asset/js/rem';
 import 'antd-mobile/dist/antd-mobile.css';
 
 ReactDOM.render(
-  <HashRouter>
-    <App />
-  </HashRouter>,
+  <Provider store={store}>
+    <HashRouter>
+      <App/>
+    </HashRouter>
+  </Provider>,
   document.getElementById('root')
 );

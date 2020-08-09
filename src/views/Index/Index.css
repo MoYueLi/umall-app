@@ -1,0 +1,32 @@
+.am-tab-bar {
+  position: fixed !important;
+  width: 100%;
+  height: 1rem;
+  bottom: 0 !important;
+}
+.am-navbar-light {
+  background: #FF9900;
+  color: #fff;
+}
+.am-navbar-light .am-navbar-title {
+  color: #fff;
+}
+.index {
+  width: 100vw;
+  height: 100vh;
+}
+.container {
+  height: auto;
+  margin-bottom: 1rem;
+  overflow: scroll;
+}
+body {
+  background: #FAFAFA;
+}
+.head {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+}
+/*# sourceMappingURL=Index.css.map */

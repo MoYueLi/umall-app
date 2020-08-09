@@ -1,0 +1,123 @@
+.cartlist {
+  margin-top: 1.1rem;
+  position: relative;
+}
+.cartlist .listcont {
+  background: #fff;
+  height: 4rem;
+}
+.cartlist .tit {
+  height: 0.8rem;
+  width: 100%;
+  font-size: 0.3rem;
+  color: #999999;
+}
+.cartlist .tit img {
+  width: 0.4rem;
+  height: 0.4rem;
+  margin-left: 0.3rem;
+  margin-top: 0.2rem;
+}
+.cartlist .tit span {
+  position: absolute;
+  top: 0;
+  display: inline-block;
+  width: 3rem;
+  height: 0.8rem;
+  margin-left: 0.1rem;
+  text-align: center;
+  line-height: 0.8rem;
+}
+.cartlist .content {
+  position: relative;
+  top: 20%;
+  display: flex;
+  justify-content: left;
+}
+.cartlist .content .left {
+  float: left;
+}
+.cartlist .content .left .check {
+  position: absolute;
+  margin-left: 0.2rem;
+  top: 40%;
+  left: 0;
+}
+.cartlist .content .left .goods {
+  margin-left: 0.8rem;
+  width: 1.8rem;
+  height: 1.8rem;
+}
+.cartlist .content .cont {
+  margin-left: 0.2rem;
+}
+.cartlist .content .cont .goodname {
+  font-size: 0.35rem;
+  color: #333;
+}
+.cartlist .content .cont .edit {
+  margin: 0.3rem;
+}
+.cartlist .content .cont .edit .btn {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.5rem;
+  text-align: center;
+  line-height: 0.5rem;
+  font-size: 0.4rem;
+  border: 1px solid #999;
+}
+.cartlist .content .cont .edit .num {
+  vertical-align: top;
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.5rem;
+  font-size: 0.3rem;
+  line-height: 0.5rem;
+  text-align: center;
+  border-top: 1px solid #999;
+  border-bottom: 1px solid #999;
+}
+.cartlist .content .cont .allprice {
+  color: #333;
+  font-size: 0.35rem;
+}
+.cartlist .content .right {
+  line-height: 2rem;
+  font-size: 0.3rem;
+}
+.cartfoot {
+  border-top: 1px solid #d9d9d9;
+  position: fixed;
+  bottom: 1rem;
+  left: 0;
+  width: 100vw;
+  height: 1.5rem;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+.cartfoot img {
+  width: 0.4rem;
+  height: 0.4rem;
+}
+.cartfoot .checkall {
+  display: inline-block;
+  margin: 0.5rem 0 0 0.5rem;
+}
+.cartfoot .edit {
+  margin-top: 0.5rem;
+}
+.cartfoot .allprice {
+  margin-top: 0.5rem;
+}
+.cartfoot .btn {
+  width: 30%;
+  height: 100%;
+  background: orange;
+  color: #fff;
+  font-size: 0.4rem;
+  line-height: 1.5rem;
+  text-align: center;
+}
+/*# sourceMappingURL=ShopCar.css.map */

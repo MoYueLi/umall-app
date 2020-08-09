@@ -32,6 +32,7 @@ class Login extends Component {
     reqLogin(this.state.user).then(res => {
       if (res.data.code === 200) {
         Toast.success('登录成功', 1)
+        this.props.history.push('/index');
       } else {
         Toast.fail(res.data.msg)
       }

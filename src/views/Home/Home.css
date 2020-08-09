@@ -1,0 +1,78 @@
+.am-search {
+  height: 100%;
+  background: #fff;
+}
+.am-search-input {
+  background: #fafafa;
+}
+.header-con {
+  height: 1rem;
+  background: #fff;
+}
+.header-con img {
+  float: left;
+  margin-top: 0.2rem;
+}
+.banner {
+  height: 4rem;
+  touch-action: none;
+  position: relative;
+}
+.banner img {
+  width: 100%;
+  height: 100%;
+}
+.am-carousel,
+.slider-frame,
+.slider-list,
+.slider-slide {
+  height: 100% !important;
+}
+.seckill {
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.seckill span {
+  width: 1.3rem;
+  height: 1.2rem;
+  text-align: center;
+}
+.seckill span img {
+  width: 100%;
+}
+.goodlist {
+  position: relative;
+  width: 92%;
+  margin: 0.5rem auto;
+}
+.goodlist .good {
+  position: relative;
+  margin-bottom: 0.2rem;
+}
+.goodlist .good img {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+.goodlist .good .right {
+  display: inline-block;
+  position: absolute;
+  margin-left: 0.3rem;
+  font-size: 0.4rem;
+}
+.goodlist .good .right .price {
+  margin: 0.2rem 0;
+  color: #E33441;
+  font-size: 0.3rem;
+}
+.goodlist .good .right .btn {
+  width: 2rem;
+  height: 0.6rem;
+  line-height: 0.6rem;
+  text-align: center;
+  background: #FF9900;
+  color: #fff;
+  border-radius: 0.1rem;
+}
+/*# sourceMappingURL=Home.css.map */

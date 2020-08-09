@@ -1,0 +1,45 @@
+.goodsList {
+  margin-top: 1rem;
+}
+.goodsList .gooditem {
+  width: 100%;
+  background: #fff;
+  padding-left: 0.3rem;
+  padding-top: 0.3rem;
+  box-sizing: border-box;
+  height: 3rem;
+  margin: 0.2rem auto;
+}
+.goodsList .gooditem .left {
+  float: left;
+  margin-top: 0.2rem;
+  display: inline-block;
+}
+.goodsList .gooditem .left img {
+  float: left;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.2rem;
+}
+.goodsList .gooditem .right {
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+.goodsList .gooditem .right .tit {
+  font-size: 0.4rem;
+  line-height: 1rem;
+}
+.goodsList .gooditem .right .price {
+  color: #E02A2A;
+  font-size: 0.3rem;
+}
+.goodsList .gooditem .right .btn {
+  width: 2rem;
+  height: 0.8rem;
+  background: orange;
+  color: #fff;
+  line-height: 0.8rem;
+  text-align: center;
+  border-radius: 0.2rem;
+}
+/*# sourceMappingURL=CateDetail.css.map */
