@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {withRoute,Route,Redirect} from 'react-router-dom'
+import {withRouter,Route,Redirect} from 'react-router-dom'
 
 // 路由拦截
 function RouterInter(props) {
@@ -11,4 +11,4 @@ function RouterInter(props) {
   );
 }
 
-export default withRoute(RouterInter);
+export default withRouter(RouterInter);

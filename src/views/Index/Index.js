@@ -43,7 +43,7 @@ class Index extends Component {
             <RouterInter path='/index/cate' component={Cate}/>
             <RouterInter path='/index/shopcar' component={ShopCar}/>
             <Route path='/index/home' component={Home}/>
-            <Redirect to='/index/mine'/>
+            <Redirect to='/index/home'/>
           </Switch>
         </div>
         <TabBar
