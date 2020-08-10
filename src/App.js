@@ -3,6 +3,7 @@ import {Route, Redirect} from 'react-router-dom';
 
 // 懒加载
 import asyncComponent from "./utils/asyncComponent";
+import RouterInter from "./components/RouterInter/RouterInter";
 
 const Index = asyncComponent(() => import('./views/Index/Index'));
 const Login = asyncComponent(() => import('./views/Login/Login'));

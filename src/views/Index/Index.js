@@ -16,6 +16,7 @@ import Mine from "../Mine/Mine";
 import Home from "../Home/Home";
 import Cate from "../Cate/Cate";
 import ShopCar from "../ShopCar/ShopCar";
+import RouterInter from "../../components/RouterInter/RouterInter";
 
 class Index extends Component {
   constructor() {
@@ -38,11 +39,11 @@ class Index extends Component {
         <div>
           <Switch>
 
-            <Route path='/index/mine' component={Mine}/>
-            <Route path='/index/cate' component={Cate}/>
-            <Route path='/index/shopcar' component={ShopCar}/>
+            <RouterInter path='/index/mine' component={Mine}/>
+            <RouterInter path='/index/cate' component={Cate}/>
+            <RouterInter path='/index/shopcar' component={ShopCar}/>
             <Route path='/index/home' component={Home}/>
-            <Redirect to='/index/home'/>
+            <Redirect to='/index/mine'/>
           </Switch>
         </div>
         <TabBar

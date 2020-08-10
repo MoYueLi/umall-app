@@ -1,0 +1,116 @@
+.minetitle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+}
+.minetitle .mineset {
+  position: absolute;
+  left: 0.3rem;
+  top: 0.2rem;
+}
+.minetitle .minenew {
+  position: absolute;
+  right: 0.4rem;
+  top: 0.2rem;
+}
+.minetitle .minenew span {
+  float: right;
+  position: absolute;
+  top: -0.1rem;
+  right: -0.12rem;
+}
+.orangebg {
+  margin-top: 0.87rem;
+  width: 100vw;
+  height: 2rem;
+  background: #FF9900;
+}
+.whitebg {
+  width: 100vw;
+  height: 1.7rem;
+  background: #fff;
+}
+.headerimg {
+  position: absolute;
+  top: 1.8rem;
+  left: 35%;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 0.15rem solid #fff;
+}
+.headerimg img {
+  width: 2rem;
+  height: 2rem;
+}
+.collect {
+  width: 100vw;
+  height: 1rem;
+  line-height: 1rem;
+  box-sizing: border-box;
+  padding-left: 0.3rem;
+  background: #fff;
+  font-size: 0.35rem;
+  margin-bottom: 0.2rem;
+}
+.collect span {
+  display: inline-block;
+  margin-left: 0.3rem;
+}
+.order {
+  width: 100vw;
+  height: 1.2rem;
+  box-sizing: border-box;
+  padding-left: 1rem;
+  background: #fff;
+  line-height: 1.2rem;
+  font-size: 0.35rem;
+  border-bottom: 1px solid #7F828B;
+}
+.order .seeorder {
+  float: right;
+  color: #ccc;
+  margin-right: 0.3rem;
+}
+.orderoper {
+  width: 100vw;
+  height: 2rem;
+  background: #fff;
+  display: flex;
+  margin-bottom: 0.2rem;
+  justify-content: space-around;
+}
+.orderoper div {
+  position: relative;
+  width: 1.5rem;
+  height: 2rem;
+  text-align: center;
+  box-sizing: border-box;
+  line-height: 2rem;
+}
+.orderoper div img {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+.orderoper div span {
+  display: block;
+  width: 1rem;
+  text-align: center;
+  position: absolute;
+  top: 0.5rem;
+  left: 10%;
+  font-size: 0.3rem;
+}
+.receive {
+  width: 100vw;
+  height: 1.5rem;
+  background: #fff;
+  line-height: 1.5rem;
+  box-sizing: border-box;
+  padding-left: 0.4rem;
+  font-size: 0.4rem;
+  color: #333;
+}
+/*# sourceMappingURL=Mine.css.map */

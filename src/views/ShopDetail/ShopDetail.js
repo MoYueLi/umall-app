@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {goodDetail, reqGetGoodDetail} from "../../store";
+import {getUser, goodDetail, reqGetGoodDetail} from "../../store";
 import {NavBar, Icon, Tag, Toast} from 'antd-mobile'
 import './ShopDetail.css'
 import {filterPrice} from "../../utils/filters";
@@ -58,7 +58,8 @@ class ShopDetail extends Component {
 
   // 添加购物车
   addCar(id) {
-    reqCartAdd({uid: 123123, goodsid: id, num: 1}).then(res => {
+    const {user} = this.props
+    reqCartAdd({uid: user.uid, goodsid: id, num: 1}).then(res => {
       if (res.data.code === 200) {
         Toast.info(res.data.msg, 1)
         this.setState({
@@ -153,6 +154,7 @@ class ShopDetail extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    user: getUser(state),
     goodDetail: goodDetail(state)
   }
 }

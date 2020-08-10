@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {NavBar, InputItem, Button, Toast} from 'antd-mobile';
 import './Login.css'
 import {reqLogin} from "../../utils/request";
+import {connect} from 'react-redux'
+import {reqSetUserAction} from "../../store";
 
 class Login extends Component {
   constructor(props) {
@@ -31,6 +33,7 @@ class Login extends Component {
     // console.log(this.state.user)
     reqLogin(this.state.user).then(res => {
       if (res.data.code === 200) {
+        this.props.setUser(res.data.list)
         Toast.success('登录成功', 1)
         this.props.history.push('/index');
       } else {
@@ -59,4 +62,13 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {}
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setUser: (user) => dispatch(reqSetUserAction(user))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

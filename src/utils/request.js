@@ -1,11 +1,23 @@
 import axios from 'axios'
 import qs from 'qs'
+import store from '../store/index'
+
+axios.interceptors.request.use(config => {
+  if (config.url !== '/api/userlogin') {
+    config.headers.authorization = store.getState().user.token
+  }
+  return config
+})
 
 // axios回包打印
 axios.interceptors.response.use(res => {
   console.group('res请求头' + res.config.url)
   console.log(res)
   console.groupEnd()
+  if (res.data.msg === '登录已过期或访问权限受限'){
+    window.open('http://localhost:3001/#/login','_self');
+    return res;
+  }
   return res;
 })
 

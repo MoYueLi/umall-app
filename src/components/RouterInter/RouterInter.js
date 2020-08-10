@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
-import {withRoute} from 'react-router-dom'
+import {withRoute,Route,Redirect} from 'react-router-dom'
 
 // 路由拦截
-class RouterInter extends Component {
-  render() {
-    return (
-      <div>
-
-      </div>
-    );
-  }
+function RouterInter(props) {
+  const user = sessionStorage.getItem('user');
+  return (
+    <div>
+      {user ? <Route {...props}/> : <Redirect to='/login'/>}
+    </div>
+  );
 }
 
 export default withRoute(RouterInter);
