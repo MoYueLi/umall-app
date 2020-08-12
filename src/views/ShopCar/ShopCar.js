@@ -62,8 +62,8 @@ class ShopCar extends Component {
   }
 
   render() {
-    console.log(this.props)
     const {cartList,cartIsAll,cartIsEdit,cartAllPrice,checkAllGood,checkGood,editGood} = this.props;
+    // 如果没有值或者购物车为空，就渲染空的页面
     if (!cartList || !cartList.length) {
       return (
         <div className='container containerNo'>
@@ -88,14 +88,14 @@ class ShopCar extends Component {
               return (
                 <div className='listcont' key={item.id}>
                   <div className="tit">
-                    <img src={storeIcon} alt=""/>
+                    <img src={storeIcon}/>
                     <span>杭州保税区仓</span>
                   </div>
                   <div className={cartIsEdit ? 'content editlist' : "content"}>
                     <div onClick={()=>checkGood(index)} className="left">
                       <img className='check'
                            src={item.checked ? radioHig : radioNor} alt=""/>
-                      <img className='goods' src={item.img} alt=""/>
+                      <img className='goods' src={item.img}/>
                     </div>
                     <div className="cont">
                       <span className="goodname">
@@ -129,12 +129,11 @@ class ShopCar extends Component {
 
         <div className='cartfoot'>
           <div onClick={() => checkAllGood()} className="checkall">
-            <img src={cartIsAll ? radioHig : radioNor} alt=""/>
+            <img src={cartIsAll ? radioHig : radioNor}/>
             <div>全选</div>
           </div>
-          <div className="edit">
-            <img onClick={() => editGood()} src={cartIsEdit ? editorHig : editorNor}
-                 alt=""/>
+          <div onClick={() => editGood()} className="edit">
+            <img src={cartIsEdit ? editorHig : editorNor}/>
             <div>编辑</div>
           </div>
           <div className="allprice">

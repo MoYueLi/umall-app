@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {Tabs, NavBar} from 'antd-mobile'
+import {Tabs} from 'antd-mobile'
 import {connect} from 'react-redux'
 import './Cate.css'
 import {cateList, reqGetCateListAcion} from "../../store/modules/cate";
+import BackHead from "../../components/BackHead/BackHead";
 
 class Cate extends Component {
   constructor(props) {
@@ -36,17 +37,17 @@ class Cate extends Component {
     })
     return (
       <div className='container'>
-        <NavBar
-          mode="light"
-        >商品分类</NavBar>
-        <div style={{width: '100vw', height: '60vh', fontSize: '0.4rem'}}>
-          <Tabs style={{height: '6rem',}} tabs={tabs}
-                tabBarPosition="left"
-                tabDirection="vertical"
-                renderTabBar={props => <Tabs.DefaultTabBar {...props} page={tabs.length}/>}
-                onTabClick={(tab, index) => this.changeList(tab, index)}
-          >
-          </Tabs>
+        <BackHead tit={'商品详情'}/>
+        <div className="cateNav">
+          <div style={{width: '100vw', height: '60vh', fontSize: '0.4rem'}}>
+            <Tabs style={{height: '6rem',}} tabs={tabs}
+                  tabBarPosition="left"
+                  tabDirection="vertical"
+                  renderTabBar={props => <Tabs.DefaultTabBar {...props} page={tabs.length}/>}
+                  onTabClick={(tab, index) => this.changeList(tab, index)}
+            >
+            </Tabs>
+          </div>
         </div>
         <div className="cate">
           {

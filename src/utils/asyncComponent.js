@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+// 组件预加载
 function asyncComponent(com) {
   class AsyncComponent extends Component {
     constructor(props) {

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import BackHead from "../../components/BackHead/BackHead";
+import {connect} from 'react-redux'
 import './Mine.css'
 import {Badge} from 'antd-mobile'
 
@@ -13,6 +14,7 @@ import receiveImg from '../../asset/img/mine/icon_consignee.png';
 import deliverImg from '../../asset/img/mine/prepare.png';
 import afterSaleImg from '../../asset/img/mine/icon_refund.png';
 import evaluateImg from '../../asset/img/mine/icon_evaluate.png'
+import {getUser} from "../../store/modules/user";
 
 class Mine extends Component {
   constructor(props) {
@@ -44,6 +46,7 @@ class Mine extends Component {
   }
 
   render() {
+    const {user} = this.props;
     return (
       <div className='container'>
         <BackHead back={false} tit={'个人中心'}/>
@@ -63,6 +66,9 @@ class Mine extends Component {
           <div className="headerimg">
             <img src={headerImg}/>
           </div>
+          <div className="nickname">
+            {user.nickname}
+          </div>
         </div>
         <div className="collect">
           <img src={keepImg} alt=""/>
@@ -76,8 +82,8 @@ class Mine extends Component {
         </div>
         <div className="orderoper">
           {
-            this.state.mines.map(item=>{
-              return(
+            this.state.mines.map(item => {
+              return (
                 <div key={item.name}>
                   <img src={item.img} alt=""/>
                   <span>{item.name}</span>
@@ -94,4 +100,14 @@ class Mine extends Component {
   }
 }
 
-export default Mine;
+const mapState = (state) => {
+  return {
+    user: getUser(state)
+  }
+}
+
+const mapDispatch = (dispatch) => {
+  return {}
+}
+
+export default connect(mapState,mapDispatch)(Mine);

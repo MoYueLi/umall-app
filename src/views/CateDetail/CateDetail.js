@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {NavBar, Icon} from 'antd-mobile'
 import {connect} from 'react-redux'
 import querystring from 'querystring';
 import {filterPrice} from "../../utils/filters";
@@ -60,9 +59,7 @@ class CateDetail extends Component {
                   </div>
                 )
               })
-            ) : null
-
-          }
+            ) : null}
         </div>
       </div>
     );

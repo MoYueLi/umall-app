@@ -2,9 +2,9 @@ import axios from 'axios'
 import qs from 'qs'
 import store from '../store/index'
 
+// 统一增加token
 axios.interceptors.request.use(config => {
-  console.log(store.getState())
-  if (config.url !== '/api/userlogin') {
+  if (!(config.url === '/api/login' || config.url === '/api/register')) {
     config.headers.authorization = store.getState().user.user.token;
   }
   return config
@@ -15,15 +15,12 @@ axios.interceptors.response.use(res => {
   console.group('res请求头' + res.config.url)
   console.log(res)
   console.groupEnd()
-  if (res.data.msg === '登录已过期或访问权限受限'){
-    window.open('http://localhost:3001/#/login','_self');
+  if (res.data.msg === '登录已过期或访问权限受限') {
+    window.open('http://localhost:3001/#/login', '_self');
     return res;
   }
   return res;
 })
-
-// axios 同一添加请求头
-
 
 // 获取首页分类信息
 export const reqGetCate = () => axios({

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {NavBar, Icon, InputItem, Button,Toast} from 'antd-mobile'
+import {InputItem, Button, Toast} from 'antd-mobile'
 import {reqRegister} from "../../utils/request";
 import BackHead from "../../components/BackHead/BackHead";
 
@@ -25,11 +25,16 @@ class Register extends Component {
   }
 
   register() {
-    reqRegister(this.state.user).then(res=>{
+    // 手机号正则验证
+    if (!/^1[3456789]\d{9}$/.test(this.state.user.phone)) {
+      Toast.fail('请输入正确的手机号！')
+      return;
+    }
+    reqRegister(this.state.user).then(res => {
       if (res.data.code === 200) {
         Toast.success(res.data.msg)
         this.props.history.push('/login')
-      }else {
+      } else {
         Toast.fail(res.data.msg)
       }
     })

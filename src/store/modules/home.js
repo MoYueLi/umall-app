@@ -6,6 +6,7 @@ const initSate = {
   bannerList: [],// 轮播图
   list: [], // 首页商品列表
   goodDetail: {}, // 商品详情
+  addCartState: false, // 加入购物车的弹窗状态
 }
 
 // 获取首页信息
@@ -50,6 +51,11 @@ export const reqGetGoodDetailAction = (id) => {
   }
 }
 
+// 设置加入购物车操作的状态
+export const setGoodCartStateAction = () => {
+  return createAction('changeAddGoodCartState')
+}
+
 // 处理方法
 function reducer(state = initSate, action) {
   switch (action.type) {
@@ -71,6 +77,11 @@ function reducer(state = initSate, action) {
         ...state,
         goodDetail: action.payload
       }
+    case 'changeAddGoodCartState':
+      return {
+        ...state,
+        addCartState: !state.addCartState
+      }
     default:
       return state
   }
@@ -82,6 +93,8 @@ export const homeList = state => state.home.list;
 export const homeBanner = state => state.home.bannerList;
 // 商品详情
 export const goodDetail = state => state.home.goodDetail;
+// 加入购物车底部状态
+export const addCartState = state => state.home.addCartState;
 
 // 导出
 export default reducer

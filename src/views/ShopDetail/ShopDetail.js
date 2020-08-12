@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {NavBar, Icon, Tag, Toast} from 'antd-mobile'
+import {Tag, Toast} from 'antd-mobile'
 import './ShopDetail.css'
 import {filterPrice} from "../../utils/filters";
 import {reqCartAdd} from "../../utils/request";
-import {goodDetail, reqGetGoodDetailAction} from "../../store/modules/home";
+import {addCartState, goodDetail, reqGetGoodDetailAction, setGoodCartStateAction} from "../../store/modules/home";
 import {getUser} from "../../store/modules/user";
 import BackHead from "../../components/BackHead/BackHead";
+import CartFoot from "./components/CartFoot/CartFoot";
 
 
 class ShopDetail extends Component {
@@ -25,17 +26,7 @@ class ShopDetail extends Component {
 
   hideAdd(e) {
     e.stopPropagation()
-    this.setState({
-      ...this.state,
-      addCar: false
-    })
-  }
-
-  showAdd() {
-    this.setState({
-      ...this.state,
-      addCar: true
-    })
+    this.props.setAddCartState()
   }
 
   stopHide(e) {
@@ -68,14 +59,13 @@ class ShopDetail extends Component {
           addCar: false
         })
       } else {
-        Toast.info(res.data.msg, 2)
+        Toast.info(res.data.msg, 1)
       }
     })
   }
 
   render() {
-    const {addCar, specsAttr} = this.state;
-    const {goodDetail} = this.props;
+    const {goodDetail,addCartState} = this.props;
     if (!goodDetail.id) {
       return (<div></div>)
     }
@@ -112,10 +102,8 @@ class ShopDetail extends Component {
           <div className='desc' dangerouslySetInnerHTML={{__html: goodDetail.description}}></div>
         </div>
 
-        <div className='footer'>
-          <div className='add' onClick={(e) => this.showAdd(e)}>加入购物车</div>
-        </div>
-        {addCar ? <div onClick={(e) => this.hideAdd(e)} className='addCar'>
+        <CartFoot/>
+        {addCartState ? <div onClick={(e) => this.hideAdd(e)} className='addCar'>
           <div onClick={(e) => this.stopHide(e)} className="addgoodinfo">
             <div className='carTit'>
               <img src={goodDetail.img}/>
@@ -150,12 +138,14 @@ class ShopDetail extends Component {
 const mapStateToProps = (state) => {
   return {
     user: getUser(state),
-    goodDetail: goodDetail(state)
+    goodDetail: goodDetail(state),
+    addCartState: addCartState(state)
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    reqGoodDetail: (id) => dispatch(reqGetGoodDetailAction(id))
+    reqGoodDetail: (id) => dispatch(reqGetGoodDetailAction(id)),
+    setAddCartState: () => dispatch(setGoodCartStateAction())
   }
 }
 

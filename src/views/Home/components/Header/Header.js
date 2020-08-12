@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {SearchBar} from 'antd-mobile'
 
 import logoImg from '../../../../asset/img/logo.jpg'

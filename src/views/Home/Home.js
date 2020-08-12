@@ -39,13 +39,11 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props)
     this.props.reqHomeList();
     this.props.reqHomeBanner();
   }
 
   render() {
-    console.log(this.props)
     const {seckills} = this.state
     const {homeList,homeBanner} = this.props
     return (

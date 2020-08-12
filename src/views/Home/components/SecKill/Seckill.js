@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 function Seckill(props) {
   const {seckills} = props
@@ -8,9 +8,9 @@ function Seckill(props) {
         seckills.map(item => {
           return (
             <span key={item.name}>
-                  <img src={item.img} alt=""/>
-                  <i>{item.name}</i>
-                </span>
+              <img src={item.img} alt=""/>
+              <i>{item.name}</i>
+            </span>
           )
         })
       }
