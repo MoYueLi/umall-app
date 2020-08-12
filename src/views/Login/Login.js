@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {NavBar, InputItem, Button, Toast} from 'antd-mobile';
+import {InputItem, Button, Toast} from 'antd-mobile';
 import './Login.css'
 import {reqLogin} from "../../utils/request";
 import {connect} from 'react-redux'
-import {reqSetUserAction} from "../../store";
+import {setUserAction} from "../../store/modules/user";
+import BackHead from "../../components/BackHead/BackHead";
 
 class Login extends Component {
   constructor(props) {
@@ -30,7 +31,6 @@ class Login extends Component {
   }
 
   login() {
-    // console.log(this.state.user)
     reqLogin(this.state.user).then(res => {
       if (res.data.code === 200) {
         this.props.setUser(res.data.list)
@@ -46,9 +46,7 @@ class Login extends Component {
     const {user} = this.state
     return (
       <div>
-        <NavBar
-          mode="light"
-        >登录</NavBar>
+        <BackHead tit={'登录'}/>
         <div className='reg' onClick={() => this.toRegsiter()}>注册</div>
         <div className="main">
           <InputItem type='text' onChange={(e) => this.changeUser(e, 'phone')} placeholder='输入手机号'
@@ -67,7 +65,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    setUser: (user) => dispatch(reqSetUserAction(user))
+    setUser: (user) => dispatch(setUserAction(user))
   }
 }
 

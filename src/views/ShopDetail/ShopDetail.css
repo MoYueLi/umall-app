@@ -23,13 +23,14 @@
 .goodinfo .info .goodname {
   font-size: 0.4rem;
 }
-.goodinfo .info .collect {
-  display: inline-block;
+.goodinfo .info .shopcollect {
+  display: block;
   float: right;
   padding-left: 0.3rem;
   margin-right: 0.3rem;
   border-left: 1px solid #ccc;
   color: red;
+  width: 1rem;
   height: 0.5rem;
   font-size: 0.3rem;
   line-height: 0.5rem;

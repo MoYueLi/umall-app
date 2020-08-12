@@ -12,6 +12,7 @@
   display: inline-block;
   color: #fff;
   font-size: 0.4rem;
+  z-index: 1001;
 }
 body {
   background: #fff;

@@ -3,8 +3,9 @@ import qs from 'qs'
 import store from '../store/index'
 
 axios.interceptors.request.use(config => {
+  console.log(store.getState())
   if (config.url !== '/api/userlogin') {
-    config.headers.authorization = store.getState().user.token
+    config.headers.authorization = store.getState().user.user.token;
   }
   return config
 })

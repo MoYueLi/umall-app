@@ -3,10 +3,15 @@ import Header from "./components/Header/Header";
 import './Home.css'
 import Banner from "./components/Banner/Banner";
 import {connect} from 'react-redux'
-import {homeBanner, homeList, reqGetHomeBanner, reqGetHomeList} from "../../store";
 import seckillimg from '../../asset/img/seckill.jpg'
 import Seckill from "./components/SecKill/Seckill";
 import GoodsList from "./components/GoodsList/GoodsList";
+import {
+  homeBanner,
+  homeList,
+  reqGetHomeBannerAction,
+  reqGetHomeListAction
+} from "../../store/modules/home";
 
 class Home extends Component {
   constructor(props) {
@@ -40,6 +45,7 @@ class Home extends Component {
   }
 
   render() {
+    console.log(this.props)
     const {seckills} = this.state
     const {homeList,homeBanner} = this.props
     return (
@@ -62,8 +68,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    reqHomeList: () => dispatch(reqGetHomeList()),
-    reqHomeBanner: () => dispatch(reqGetHomeBanner())
+    reqHomeList: () => dispatch(reqGetHomeListAction()),
+    reqHomeBanner: () => dispatch(reqGetHomeBannerAction())
   }
 }
 

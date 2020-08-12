@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {NavBar, Icon} from 'antd-mobile'
 import {connect} from 'react-redux'
-import {cateInfo, reqGetCateInfo} from "../../store";
 import querystring from 'querystring';
 import {filterPrice} from "../../utils/filters";
 import './CateDetail.css'
+import {cateInfo, reqGetCateInfoAction} from "../../store/modules/cate";
+import BackHead from "../../components/BackHead/BackHead";
 
 class CateDetail extends Component {
   constructor() {
@@ -29,16 +30,11 @@ class CateDetail extends Component {
 
   render() {
     const {title} = this.state;
-    console.log(this.props)
     const {cateInfo} = this.props
     return (
       <div>
         <div className='head'>
-          <NavBar
-            onLeftClick={() => this.props.history.goBack()}
-            icon={<Icon type="left"/>}
-            mode="light"
-          >{title}</NavBar>
+          <BackHead back={true} tit={title}/>
         </div>
         <div className="goodsList">
           {
@@ -81,7 +77,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    reqGetCateInfo: (id) => dispatch(reqGetCateInfo(id))
+    reqGetCateInfo: (id) => dispatch(reqGetCateInfoAction(id))
   }
 }
 

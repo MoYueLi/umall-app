@@ -8,6 +8,11 @@
 .header-con {
   height: 1rem;
   background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
 }
 .header-con img {
   float: left;
@@ -17,6 +22,7 @@
   height: 4rem;
   touch-action: none;
   position: relative;
+  margin-top: 1rem;
 }
 .banner img {
   width: 100%;

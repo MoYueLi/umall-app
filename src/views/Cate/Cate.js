@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Tabs, NavBar} from 'antd-mobile'
 import {connect} from 'react-redux'
-import {cateList, reqGetCateList} from "../../store";
 import './Cate.css'
+import {cateList, reqGetCateListAcion} from "../../store/modules/cate";
 
 class Cate extends Component {
   constructor(props) {
@@ -41,31 +41,11 @@ class Cate extends Component {
         >商品分类</NavBar>
         <div style={{width: '100vw', height: '60vh', fontSize: '0.4rem'}}>
           <Tabs style={{height: '6rem',}} tabs={tabs}
-
                 tabBarPosition="left"
                 tabDirection="vertical"
                 renderTabBar={props => <Tabs.DefaultTabBar {...props} page={tabs.length}/>}
                 onTabClick={(tab, index) => this.changeList(tab, index)}
           >
-            {/*{*/}
-            {/*  cateList.map(item => {*/}
-            {/*    return (*/}
-            {/*      <div key={item.id}>*/}
-            {/*        {*/}
-            {/*          item.children.map(item => {*/}
-            {/*            return(*/}
-            {/*              <div key={item.id}>*/}
-            {/*                <img src={item.img} alt=""/>*/}
-            {/*                <span>{item.catename}</span>*/}
-
-            {/*              </div>*/}
-            {/*            )*/}
-            {/*          })*/}
-            {/*        }*/}
-            {/*      </div>*/}
-            {/*    )*/}
-            {/*  })*/}
-            {/*}*/}
           </Tabs>
         </div>
         <div className="cate">
@@ -92,7 +72,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    reqCateList: () => dispatch(reqGetCateList())
+    reqCateList: () => dispatch(reqGetCateListAcion())
   }
 }
 

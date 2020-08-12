@@ -1,14 +1,6 @@
 import React, {Component} from 'react';
 import BackHead from "../../components/BackHead/BackHead";
 import {connect} from 'react-redux'
-import {
-  cartList,
-  changeCheckedAction,
-  changeCheckedAllAction,
-  editCartList, getUser,
-  reqEditCartGood,
-  reqGetCartListAction
-} from "../../store";
 import './ShopCar.css'
 import {Modal, Toast} from 'antd-mobile'
 
@@ -22,50 +14,39 @@ import shopCarNor from '../../asset/img/tab_shopping_nor.png'
 
 // 过滤器
 import {filterPrice, filterPriceNo} from "../../utils/filters";
-import {reqCartDelete, reqCartEdit} from "../../utils/request";
+import {reqCartDelete} from "../../utils/request";
+import {
+  cartAllPrice,
+  cartIsAll, cartIsEdit,
+  cartList,
+  changeCartGoodAction,
+  changeCartListAction,
+  changeCheckedAction, changeIsAllAction,
+  changeIsEditorAction
+} from "../../store/modules/shopCart";
+import {getUser} from "../../store/modules/user";
 
 class ShopCar extends Component {
   constructor(props) {
     super(props);
     this.alert = Modal.alert;
-    this.state = {}
   }
 
   componentDidMount() {
-    const {user} = this.props;
-    this.props.reqGetCart(user.uid);
+    this.props.reqGetCart();
   }
 
-  computedPrice() {
-    const {cartList} = this.props;
-    let price = 0
-    cartList.forEach(item => {
-      if (item.checked) {
-        price += item.num * item.price;
-      }
-    })
-    return filterPriceNo(price)
-  }
-
-  checkGoodList(index, isAll,checked) {
-    if (isAll)
-      this.props.checkAllGood(checked)
-    else
-      this.props.checkGood(index)
-  }
-
-  editList() {
-    this.props.editGood()
-  }
-
-  del(id, uid) {
+  // 删除单个购物车
+  del(id) {
+    const {editGood,reqGetCart,user} = this.props
     this.alert('', '你确定要删除吗?', [
       {text: '取消', onPress: () => null},
       {
         text: '确认', onPress: () => reqCartDelete({id}).then(res => {
           if (res.data.code === 200) {
-            Toast.success(res.data.msg)
-            this.props.reqGetCart(uid)
+            editGood();
+            Toast.success(res.data.msg,1)
+            reqGetCart(user.uid)
           }
         })
       },
@@ -74,7 +55,7 @@ class ShopCar extends Component {
 
   editCart(id, type, num) {
     if (type === 1 && num === 1) {
-      Toast.info('不能少于1件',1);
+      Toast.info('不能少于1件', 1);
       return;
     }
     this.props.editCartGood(id, type);
@@ -82,8 +63,7 @@ class ShopCar extends Component {
 
   render() {
     console.log(this.props)
-    const {cartList} = this.props;
-    let checkAll = cartList.every(item => item.checked)
+    const {cartList,cartIsAll,cartIsEdit,cartAllPrice,checkAllGood,checkGood,editGood} = this.props;
     if (!cartList || !cartList.length) {
       return (
         <div className='container containerNo'>
@@ -101,7 +81,7 @@ class ShopCar extends Component {
     }
     return (
       <div className='container'>
-        <BackHead back={false} tit={'购物车'}/>
+        <BackHead tit={'购物车'}/>
         <div className="cartlist">
           {
             cartList.map((item, index) => {
@@ -111,9 +91,9 @@ class ShopCar extends Component {
                     <img src={storeIcon} alt=""/>
                     <span>杭州保税区仓</span>
                   </div>
-                  <div className={item.edit ? ' content editlist' : "content"}>
-                    <div className="left">
-                      <img onClick={() => this.checkGoodList(index)} className='check'
+                  <div className={cartIsEdit ? 'content editlist' : "content"}>
+                    <div onClick={()=>checkGood(index)} className="left">
+                      <img className='check'
                            src={item.checked ? radioHig : radioNor} alt=""/>
                       <img className='goods' src={item.img} alt=""/>
                     </div>
@@ -148,17 +128,17 @@ class ShopCar extends Component {
         </div>
 
         <div className='cartfoot'>
-          <div onClick={() => this.checkGoodList(0, true,!checkAll)} className="checkall">
-            <img src={checkAll ? radioHig : radioNor} alt=""/>
+          <div onClick={() => checkAllGood()} className="checkall">
+            <img src={cartIsAll ? radioHig : radioNor} alt=""/>
             <div>全选</div>
           </div>
           <div className="edit">
-            <img onClick={() => this.editList()} src={cartList.every(item => item.edit) ? editorHig : editorNor}
+            <img onClick={() => editGood()} src={cartIsEdit ? editorHig : editorNor}
                  alt=""/>
             <div>编辑</div>
           </div>
           <div className="allprice">
-            合计: {this.computedPrice()}
+            合计: {filterPriceNo(cartAllPrice)}
             <div>
               (不含运费)
             </div>
@@ -174,18 +154,21 @@ class ShopCar extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: getUser(state),
-    cartList: cartList(state)
+    cartList: cartList(state),
+    cartIsAll: cartIsAll(state),
+    cartIsEdit: cartIsEdit(state),
+    cartAllPrice: cartAllPrice(state),
+    user: getUser(state)
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    reqGetCart: (uid) => dispatch(reqGetCartListAction(uid)),
-    checkGood: (index, isAll) => dispatch(changeCheckedAction(index, isAll)),
-    editGood: () => dispatch(editCartList()),
-    editCartGood: (id, type) => dispatch(reqEditCartGood(id, type)),
-    checkAllGood: (checked) => dispatch(changeCheckedAllAction(checked))
+    reqGetCart: () => dispatch(changeCartListAction()),
+    checkGood: (index) => dispatch(changeCheckedAction(index)),
+    editGood: () => dispatch(changeIsEditorAction()),
+    editCartGood: (id, type) => dispatch(changeCartGoodAction(id, type)),
+    checkAllGood: () => dispatch(changeIsAllAction())
   }
 }
 

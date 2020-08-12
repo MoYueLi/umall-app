@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {NavBar, Icon, InputItem, Button,Toast} from 'antd-mobile'
 import {reqRegister} from "../../utils/request";
+import BackHead from "../../components/BackHead/BackHead";
 
 class Register extends Component {
   constructor(props) {
@@ -38,11 +39,7 @@ class Register extends Component {
     const {user} = this.state
     return (
       <div>
-        <NavBar
-          onLeftClick={() => this.props.history.goBack()}
-          icon={<Icon type="left"/>}
-          mode="light"
-        >注册</NavBar>
+        <BackHead back={true} tit={'注册'}/>
         <div className="main">
           <InputItem type='text' onChange={(e) => this.changeUser(e, 'phone')} placeholder='输入手机号'
                      value={user.phone}>手机号</InputItem>

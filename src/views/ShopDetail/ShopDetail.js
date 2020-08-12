@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getUser, goodDetail, reqGetGoodDetail} from "../../store";
 import {NavBar, Icon, Tag, Toast} from 'antd-mobile'
 import './ShopDetail.css'
 import {filterPrice} from "../../utils/filters";
 import {reqCartAdd} from "../../utils/request";
+import {goodDetail, reqGetGoodDetailAction} from "../../store/modules/home";
+import {getUser} from "../../store/modules/user";
+import BackHead from "../../components/BackHead/BackHead";
 
 
 class ShopDetail extends Component {
@@ -17,7 +19,6 @@ class ShopDetail extends Component {
   }
 
   componentDidMount() {
-    // console.log(this.props)
     let id = this.props.match.params.id;
     this.props.reqGoodDetail(id);
   }
@@ -73,20 +74,14 @@ class ShopDetail extends Component {
   }
 
   render() {
-    // console.log(this.props)
     const {addCar, specsAttr} = this.state;
-    // console.log(specsAttr)
     const {goodDetail} = this.props;
     if (!goodDetail.id) {
       return (<div></div>)
     }
     return (
       <div>
-        <NavBar
-          onLeftClick={() => this.props.history.goBack()}
-          icon={<Icon type="left"/>}
-          mode="light"
-        >商品详情</NavBar>
+        <BackHead back={true} tit={'商品详情'}/>
         <div className="goodinfo">
           <img className='good' src={goodDetail.img}/>
           <div className="info">
@@ -94,7 +89,7 @@ class ShopDetail extends Component {
               <span className='goodname'>
                 {goodDetail.goodsname}
               </span>
-              <span className='collect'>
+              <span className='shopcollect'>
                 收藏
               </span>
             </div>
@@ -160,7 +155,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    reqGoodDetail: (id) => dispatch(reqGetGoodDetail(id))
+    reqGoodDetail: (id) => dispatch(reqGetGoodDetailAction(id))
   }
 }
 

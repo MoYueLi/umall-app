@@ -1,7 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {filterPrice} from '../../../../utils/filters'
 import {withRouter} from 'react-router-dom'
-
 
 function GoodsList(props) {
   const {goods} = props;
